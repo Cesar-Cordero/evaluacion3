@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nombre más largo</title>
+</head>
+<body>
+    <h2>Ingresa 3 nombres:</h2>
+    <input type="text" id="nombre1" placeholder="Nombre 1"><br><br>
+    <input type="text" id="nombre2" placeholder="Nombre 2"><br><br>
+    <input type="text" id="nombre3" placeholder="Nombre 3"><br><br>
+    <button onclick="determinarNombreMasLargo()">Enviar</button>
+    <p id="resultado"></p>
+
+    <script>
+        function determinarNombreMasLargo() {
+            const nombre1 = document.getElementById("nombre1").value.trim();
+            const nombre2 = document.getElementById("nombre2").value.trim();
+            const nombre3 = document.getElementById("nombre3").value.trim();
+
+            // Comparar las longitudes
+            let nombreMasLargo = "";
+            let longitud = 0;
+
+            if (nombre1.length >= nombre2.length && nombre1.length >= nombre3.length) {
+                nombreMasLargo = nombre1;
+                longitud = nombre1.length;
+            } else if (nombre2.length >= nombre1.length && nombre2.length >= nombre3.length) {
+                nombreMasLargo = nombre2;
+                longitud = nombre2.length;
+            } else {
+                nombreMasLargo = nombre3;
+                longitud = nombre3.length;
+            }
+
+            // Mostrar el resultado
+            const resultado = document.getElementById("resultado");
+            resultado.textContent = `El nombre más largo es "${nombreMasLargo}" con ${longitud} caracteres.`;
+        }
+        </script>
+        <a href="{{ url_for('index') }}"><button>Volver al inicio</button></a>
+</body>
+</html>
